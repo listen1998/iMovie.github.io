@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="referrer" content="never">
+		<link rel="shortcut icon" href="img/logo4.png">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>My Movie,My Story</title>
+	</head>
+	<style type="text/css">
+		.icon {
+		  width: 2em;
+		  height: 2em;
+		  
+		  fill: white;
+		  overflow: hidden;
+		  opacity: 0.3;
+		  cursor: pointer;
+		}
+		.icon:hover{
+			fill: orangered;
+			opacity:0.8;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+			border: 0;
+			text-decoration: none;
+			list-style: none;
+		}
+		a:hover{color: orangered;}
+		header{
+			width: 100%;
+			height: 100px;
+			background:linear-gradient(180deg,rgba(0,0,0,0.5),rgba(0,0,0,0));
+			
+		
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 1;
+			
+		}
+		header nav{
+			width: 50%;
+			height: 100px;
+			float: right;
+			margin-right: 50px;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+		}
+		header nav a{
+			width: 80px;
+			height: 40px;
+			/* background-color: #000080; */
+			font-size: 18px;
+			text-align: center;
+			line-height: 40px;
+			text-decoration: none;
+			color: #fff;
+			text-shadow: #000000 1px 1px 1px;
+		}
+	
+		.on0{
+			color: orangered;
+		}
+		.main{
+	
+			width: 100%;
+			
+			position: relative;
+		
+		}
+		.logo{
+			margin-left: 50px;
+			width: 200px;
+			height: 100px;
+			
+			background-image: url(img/logo.png);
+			background-repeat: no-repeat;
+			background-size: 150%;
+			background-position: center;
+			float: left;
+		
+
+		}
+		#pic{
+			width: 100%;
+			height: 100vh;
+			position: relative;
+			
+		}
+		.image{
+			
+			margin: 0 auto;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+			transition: all 1s;
+			
+		}
+		.on1{
+			opacity: 1;
+		}
+		
+		.image img{
+			width: 100%;
+			height: 100%;
+		}
+		#pic ul{
+			width: 300px;
+		
+			position: absolute;
+			left: 100px;
+			bottom: 150px;
+			/* background: #0000FF; */
+			display: flex;
+		}
+		#pic ul li{
+			border-radius: 5px;
+			width: 20%;
+			height: 60px;
+			margin-right: 10px;
+			/* background-color: orangered; */
+			cursor: pointer;
+			text-align: center;
+			line-height: 60px;
+			color: rgba(255,255,255,0.1);
+			font-size: 30px;
+		}
+		#pic ul .on{
+			background-color: rgba(255, 69, 0,0.5);
+			color: #fff;
+		}
+		#pic ul li:hover{
+			color: rgba(255,255,255,0.5);
+		} 
+		.littleTitle{
+			width: 60%;
+			
+			height: 100px;
+			position: absolute;
+			right: 100px;
+			bottom: 100px;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			opacity: 0;
+			transition: all 1s;
+		}
+		.on2{
+			opacity: 1;
+		}
+		.littleTitle>p{
+			padding-bottom: 10px;
+			font-family: "黑体";
+			color: #fff;
+			font-size: 50px;
+			text-shadow: #000000 2px 2px 2px;
+			cursor: pointer;
+		}
+		.button{
+			font-size: 40px;
+		}
+		.left{
+			position: absolute;
+			left: 50px;
+			top: 50vh;
+		}
+		.right{
+			position: absolute;
+			right: 50px;
+			top: 50vh;
+		}
+		.card{
+			width: 70%;
+			background: rgba(0,0,0,0.5);
+			height: 400px;
+			border: #000000 1px solid;
+			position: absolute;
+			left: 50%;
+			top: 700px;
+			transform: translate(-50%,0); 
+		}
+		.show{
+			width: 100%;
+			height: 1000px;
+			background: #f1f1f1;
+			text-align: center;
+			overflow: hidden;
+			position: relative;
+		}
+		.part3{
+			width: 100%;
+			height: 0;
+			position: absolute;
+			text-align: center;
+			bottom: 0;
+			left: 0;
+			overflow: hidden;
+			transition: all 1s;
+		}
+		.title-P{
+			width: 100%;
+			height: 140px;
+			padding-top: 150px;
+			overflow: hidden;
+		}
+		#oneP{
+			opacity: 0;
+			transition: all 2s;
+		}
+		#threeP{
+			height: 0;
+			transition: all 2s;
+		}
+		.title-P p:nth-child(2){
+			padding: 20px;
+			font-size: 17px;
+			color: gray;
+
+		}
+		.title-P p:nth-child(1){
+			color: #000;
+			font-size: 36px;
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+		.card2{
+			margin: 0 auto;
+			width: 80%;
+			height: 0;
+			overflow: hidden;
+			border: 1px solid #ccc;
+			box-shadow: 0px 0px 10px #CCCCCC;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			flex-wrap: wrap;
+			transition: all 2s;
+		}
+
+		.card2 .card2-1{
+			
+			width: 13%;
+			border: 1px solid #CCCCCC;
+			box-shadow: 0px 0px 10px #CCCCCC;
+			height: 300px;
+			font-weight: 300;
+			transition: all 0.3s;
+			overflow: hidden;
+			cursor: pointer;
+		}
+		.card2-1 img{
+			width: 100%;
+			height: 260px;
+		}
+		.card2-1 a{color: #000;font-weight: normal;}
+		.card2-1:hover{
+			width: 15%;
+			height: 350px;
+			
+		}
+		.card3{
+			margin: 0px auto;
+			width: 80%;
+			height: 400px;
+			overflow: hidden;
+			position: relative;
+			box-shadow: 0px 0px 20px #000000;
+			cursor: pointer;
+		
+			
+		}
+		
+		.card3 .card3-1{
+			width: 0;
+			height: 0;
+			position: absolute; 
+			left: 0;
+			top: 0;
+			background-color: rgba(0, 0, 0, 0.9);
+			
+			overflow: hidden;
+			/* border: 1px solid #CCCCCC; */
+			box-shadow: 0px 0px 20px #000000;
+			transition: all 1s;
+		}
+		
+		.card3:hover .card3-1{
+			height: 100%;
+			width: 100%;
+			
+		}
+		.card3 img{
+			width: 100%;		
+		}
+		.card3-1 img{
+			width: 20%;
+			height: 100%;
+			float: left;
+		
+		}
+		.card3-1 ul{
+			width: 60%;
+			float: left;
+			margin-top: 100px;
+			margin-left: 100px;
+			padding-left: 50px;
+			border-left: 2px solid #fff;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+		
+		}
+		.card3-1 ul li{
+			color: #fff;
+			font-size: 17px;
+			font-weight: 300;
+		}
+		.card3-1 ul li:hover{
+			color: orangered;
+		}
+		.show1{
+			width: 100%;
+			height:1100px;
+			background: rgba(0,0,0,0.5);
+			text-align: center;
+		}
+		.show1 .backpic{
+			width: 100%;
+			height: 1100px;
+			background: url(img/tqzz.jpg) no-repeat;
+			background-size: 100%;
+			position: fixed;
+			left: 0;
+			top: -10px;
+			z-index: -1;
+			opacity: 0;
+			
+		}
+		.card4{
+			margin: 0 auto;
+			width: 0;
+			height: 700px;
+			border: #000000 1px solid;
+			box-shadow: 0px 0px 20px #000000;
+			position: relative;
+			transition: all 1s;
+			overflow: hidden;
+			border-radius: 20px;
+		}
+		.card4 nav{
+			width: 90%;
+			/* height: 50px; */
+		
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-end;
+			float: left;
+		}
+		.card4 nav li{
+			width: 100px;
+			height: 50px;
+			font-size: 20px;
+			font-weight: normal;
+			color: #fff;
+			text-align: center;
+			line-height: 50px;
+			cursor: pointer;
+		}
+		
+		.card4 nav .onshow{
+			color: orangered;
+			border-bottom: 2px orangered solid;
+		}
+		#refresh{
+			width: 10%;
+			float: left;
+			width: 100px;
+			height: 50px;
+			text-align: left;
+			line-height: 60px;
+			
+			color: #FFFF;
+			cursor: pointer;
+		}
+		.card4-1{
+			margin-top: 20px;
+			width: 100%;
+			height: 600px;
+			overflow: hidden;
+			position: absolute;
+			top: 50px;
+			left: 0;
+			opacity: 0;
+		}
+		#card4one,#card4tri{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			flex-wrap: wrap;
+			
+		}
+		#card4two{
+			column-count: 6;
+			column-gap: 0;
+		}
+		.card4 .on3{
+			opacity: 1;
+		}
+		.card4-1 .lines{
+			width: 600px;
+			max-height:180px;
+			border-radius: 10px;
+			
+			border: 2px #fff solid;
+			box-shadow: 0px 0px 5px #fff;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			overflow: hidden;
+		}
+		.card4-1 .lines p{
+			padding: 10px;
+			color: #fff;
+			font-size: 16px;
+		}
+		.card4-1-images{
+			min-width: 100px;
+			max-width: 220px;
+			/* height: 200px; */
+			box-shadow: 0px 0px 5px #fff;
+			break-inside: avoid;
+			box-sizing: border-box;
+			padding: 5px;
+		}
+		.card4-1-images img{
+			width: 100%;
+			display: block;
+		}
+		.comments{
+			width: 80%;
+			height: 100px;
+			
+			display: flex;
+			align-items: center;
+		}
+		.comments .headpic{
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			overflow:hidden;
+		}
+		.comments .headpic img{
+			width: 100%;
+			height: 100%;
+			display: block;
+			
+		}
+		.comment{
+			max-width: 80%;
+			margin-left: 50px;
+			/* height: 80px; */
+			min-height: 80px;
+			max-height: 120px;
+			text-align: left;
+			color: #fff;
+			font-size: 16px;
+			background: rgba(255,255,255,0.5);
+			border-radius: 10px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			
+		}
+		.comment::before{
+			content: "";
+			position: absolute;
+			left: -20px;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			width: 0;
+			height: 0;
+			border: 20px transparent solid;
+	
+			border-right: 20px rgba(255,255,255,0.5) solid;
+			
+			
+		}
+		.show2{
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height:0;
+			background-color: #00000080;
+		
+			transition: all 1s;
+			
+			overflow: hidden;
+		}
+		
+		.show2 .card5{
+				background: #fff;
+				border-radius: 10px;
+				margin: 100px auto;
+				width: 80%;
+				height: 700px;
+				text-align: center;
+				color:slategray;
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+		}
+		.card5 .exit{
+			width: 40px;
+			height: 40px;
+			color: rgba(0,0,0,0.5);
+			position: absolute;
+			top: 20px;
+			right: 30px;
+			font-size: 40px;
+			text-align: center;
+			line-height: 40px;
+			text-shadow:  0px 0px 0px;
+			transition: all 1;
+		}
+		.exit:hover{
+			cursor: pointer;
+			text-shadow: #000000 0px 0px 20px;
+		}
+	/* 	@keyframes sun{
+			100%{
+				background-position: -400% 0;
+			}
+		} */
+		.card5-1{
+			width: 50%;
+			height: 200px;
+			
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.card5-2{
+			width: 40%;
+			height: 140px;
+		
+			overflow: hidden;
+			transition: all 1s;
+		}
+		.myHeadpic{
+			width: 100px;
+			margin: 20px auto;
+			transform: translate(0,0);
+		
+			border-radius: 50%;
+			
+		}
+		.myHeadpic::after{
+			content: "";
+			position: absolute;
+			left: -5px;
+			top: -5px;
+			right: -5px;
+			bottom: -5px;
+			background:linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+			background-size: 400%;
+			border-radius: 50%;
+			filter:blur(10px) ;
+			z-index: -1;
+			animation: sun 10s infinite;
+		}
+	
+		@keyframes sun{
+			100%{
+				background-position: -400% 0;
+			}
+		}
+		.myHeadpic img{
+			cursor: pointer;
+			border-radius: 50%;
+			display: block;
+			width: 100%;
+		}
+		.myinformation{
+			
+			margin: 35px auto;
+			width: 50%;
+			height: 50%;
+			border-radius: 10px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			background-color: #fff;
+			border:  #000 1px solid;
+			box-shadow: 0px 0px 10px #000;
+		}
+		.myinformation a{
+			line-height: 40px;
+			color: #000;
+			font-size: 20px;
+			width: 90%;
+			overflow: hidden;
+			border-bottom: 1px #000 solid;
+			height: 40px;
+		}
+		footer{
+			width: 100%;
+			height: auto;
+			background: #f7f7f7;
+			text-align: center;
+			line-height: 100px;
+		}
+
+	</style>
+	<body>
+		<header>
+			<div class="logo"></div>
+			<nav>
+				<a href="#" class="on0">首页</a>
+				<a href="#rm">热门</a>
+				<a href="#tj">推荐</a>
+				<a href="#yp">分享</a>
+				<a href="more.html">更多</a>
+				<a href="detail.html">搜索</a>
+				<a href="###" id="gy" style="width: 160px;">关于&联系</a>
+	
+			</nav>
+		</header>
+		<div class="main">
+			<div id="pic">				
+				<div class="image on1">
+					<img src="img/sndn.jpg" >								
+				</div>
+				<div class="image ">
+					<img src="img/y.jpg" >
+					
+				</div>
+				<div class="image">
+					<img src="img/backpic.jpg" >
+						
+				</div>
+				<div class="image">
+					<img src="img/xyqs.jpg" >
+				
+				</div>
+				<div class="image">
+					<img src="img/xjcy.jpg" >		
+				</div>
+				<div class="title">	
+					<div class="littleTitle on2">
+						<p>"生活，就像柑橘树上挂着青皮的果，苦是一定的，甜也有"</p>
+						<p style="font-size: 25px;">----少年的你</p>
+					</div>	
+					<div class="littleTitle">
+						<p>"你应该在爬树，然后从那些树上掉下来"</p>
+						<p style="font-size: 25px;">----乔乔的异想世界</p>
+					</div>	
+					<div class="littleTitle">
+						<p>"I Love You Three Thousands"</p>
+						<p style="font-size: 25px;">----复仇者联盟：终局之战</p>
+					</div>
+					<div class="littleTitle">
+						<p>"那些几乎无法抑制的渴望"</p>
+						<p style="font-size: 25px;">----校园情圣</p>
+					</div>	
+					<div class="littleTitle">
+						<p>"白昼将尽，暮年仍应燃烧咆哮"</p>
+						<p style="font-size: 25px;">----星际穿越</p>
+					</div>
+				</div>
+				<ul>
+					<li class="on">1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ul>
+			</div>
+				<div class="button left">
+					<svg class="icon" aria-hidden="true">
+					  <use xlink:href="#icon-lishifanyeim"></use>
+					</svg>
+				</div>
+				<div class="button right">
+					<svg class="icon" aria-hidden="true">
+					  <use xlink:href="#icon-lishifanyeim1 "></use>
+					</svg>
+				</div>
+		</div>
+			<!-- <div class="card">	
+			</div> -->
+		<div class="show" id="rm">
+				<div class="title-P" id="oneP">
+					<p>热门电影</p>
+					<p><span>——&nbsp;&nbsp;&nbsp;" 我现在有窗户了，猎户星座此时已出现在地平线上，它的附近是木星，2000年不会有比这更灿烂的时刻  "&nbsp;&nbsp;&nbsp;——</span></p>
+				</div>
+				<div class="card2">	
+					<!-- <div class="card2-1">
+						<img src="img/p2079334286.jpg" >
+						<a>穿越时空的少女</a>
+					</div> -->
+				</div>
+			</div>
+		<div class="show" id="tj" style="background: #fff;">
+				
+				
+				<div class="part3">
+					<div class="title-P">	
+						<p>今日推荐</p>
+						<p><span>——&nbsp;&nbsp;&nbsp;" 永远相信美好的事情即将发生 "&nbsp;&nbsp;&nbsp;——</span></p>
+					</div>
+					<div class="card3">	
+						<img src="img/tj2.jpg">
+						<div class="card3-1">
+							<img src="img/tj.jpg" >
+							<ul>
+								<li>导演：钟孟宏</li>
+								<li>主演: 陈以文 / 柯淑勤 / 巫建和 / 刘冠廷 / 许光汉</li>
+								<li>类型: 剧情 / 犯罪</li>
+								<li>剧情: </li>
+								<li style="text-align: left;text-indent: 25px;">平凡的一家人阿文（陈以文 饰）和琴姐（柯淑勤 饰）育有两个儿子，叛逆的小儿子阿和（巫建和 饰）与好友菜头（刘冠廷 饰）砍伤人进了少年辅育院，但阿和的女友小玉（吴岱凌 饰）却带着身孕来家里…琴姐不顾阿文反对，将小玉留下来照顾。此时，被砍伤者家属也来找阿文求取巨额赔偿，阿文受不了总是带来麻烦的小儿子，将所有希望都寄托在资优生大儿子阿豪（许光汉 饰）身上，却不知道温暖善良的阿豪心中也藏着不为人知的秘密…</li>	
+							</ul>
+						</div>
+					</div>
+				</div>
+		</div>
+				
+		<div class="show1" id="yp">
+				<div class="title-P" id="threeP">
+					<p style="color: #fff;">今日分享</p>
+					<p style="color: #fff;"><span>——&nbsp;&nbsp;&nbsp;" 当我一微笑，所有的苦难，都灰飞烟灭 "&nbsp;&nbsp;&nbsp;——</span></p>
+				</div>
+				<div class="backpic"></div>
+				<div class="card4">
+					<nav>
+						<li class="onshow">台词</li>
+						<li>剧照</li>
+						<li>影评</li>
+					</nav>
+					<div id="refresh">换一批</div>
+					<div class="card4-1 on3" id="card4one">
+						<!-- <div class="lines">
+							<p>"你不要对我这么好，你对我这么好、要是有一天你对我不好了，我会很伤心。"</p>
+							<p style="padding-bottom:10px;">"Don’t be so nice to me. You are so nice to me. If one day you are not nice to me, I will be very sad."</p>
+							<p style="color: orangered;">夏日的么么茶</p>
+						</div> -->
+					</div>
+					<div class="card4-1" id="card4two">
+					<!-- 	<div class="card4-1-images">
+							<img src="img/fh.jpg" >
+							
+						</div> -->
+					</div>
+					<div class="card4-1" id="card4tri">
+					<!-- 	<div class="comments">
+							<div class="headpic">
+								<img src="img/head.jpg" >
+							</div>
+							<div class="comment">
+								<a>"当年的奥斯卡颁奖礼上，被如日中天的《阿甘正传》掩盖了它的光彩，而随着时间的推移，这部电影在越来越多的人们心中的地位已超越了《阿甘》。每当现实令我疲惫得产生无力感，翻出这张碟，就重获力量。毫无疑问，本片位列男人必看的电影前三名！回顾那一段经典台词：“有的人的羽翼是如此光辉，即使世界上最黑暗的牢狱，也无法长久地将他围困！”"<a>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		
+		
+		<div class="show2">
+			
+			<div class="card5">
+				<div class="exit">✖</div>
+				<div class="card5-1">
+					<h1></h1>
+					<h3 id="hTitletwo"><!-- 每个人的一生都是电影的合辑 --></h3>
+					<h3 id="hTitletri"><!-- 希望你在做看客的同时，也讲好自己的故事 --></h3>
+				</div>
+				<div class="card5-2">	
+					<div class="myHeadpic hide">
+						<img src="img/qq.jpg" >
+					</div>
+					<div class="myinformation">
+						<a href="https://user.qzone.qq.com/823839693/infocenter"><span style="color: orangered;font-size: 30px;">QQ:</span>&nbsp;&nbsp;&nbsp;823839693</a>
+						<a><span style="color: orangered;font-size: 30px;">Tel:</span>&nbsp;&nbsp;&nbsp;17719982410</a>
+						<a>银鞍照白马，飒沓如流星</a>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		<footer id="footer">
+			版权所有 © QXH
+		</footer>
+		<script src="js/iconfont.js"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

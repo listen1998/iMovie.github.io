@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="referrer" content="never">
+		<link rel="stylesheet" type="text/css" href="css/about.css"/>
+		<link rel="shortcut icon" href="img/logo4.png">
+		<title>My Movie,My Story</title>
+
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			border: 0;
+			text-decoration: none;
+			list-style: none;
+		}
+		a:hover{color: orangered;}
+	
+		header{
+			width: 100%;
+			height: 50px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			background: #21252b;
+			display: flex;
+			justify-content: space-between;
+			z-index: 100;
+		
+			
+		}
+		header nav{
+	
+			height: 50px;
+			
+			margin-right: 50px;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+		}
+		header nav a{
+			width: 80px;
+			height: 40px;
+
+			font-size: 18px;
+			text-align: center;
+			line-height: 40px;
+			text-decoration: none;
+			color: #fff;
+			text-shadow: #000000 1px 1px 1px;
+		}
+		.logo{
+			margin-left: 50px;
+			width: 200px;
+			height: 50px;
+			
+			background-image: url(img/logo3.png);
+			background-repeat: no-repeat;
+			background-size: 80%;
+			background-position: center;
+		
+		
+		
+		}
+		.search{
+			
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 40px;
+			
+			
+			height: 50px;
+			margin-right: 100px;
+			transition: all 1s;
+		}
+
+		form{
+			width: 100%;
+	
+			height: 100%;
+			display: flex;
+			justify-content: flex-start;
+			transition: all 1s;
+			position: relative;
+		}
+		form input{
+			background: rgba(0,0,0,0.1);
+			opacity: 0;
+			width:500px;
+			height: 35px;
+			margin-top:7.5px;
+			font-size: 15px;
+			border-radius: 5px;
+			transition: all 1s;
+		}
+		form .searchIcon{
+			position: absolute;
+			right: 0;
+			background-image: url(img/搜索.png);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size:80%;
+			width: 35px;
+			height: 35px;
+			margin-top: 7.5px;
+
+			cursor: pointer;
+
+			
+		}
+		.main{
+			width: 100%;
+			min-height: 1100px;
+			opacity: 0;
+			overflow-y: scroll;
+	
+			display: flex;
+			justify-content: space-around;
+			transition: all 2s;
+		}
+		   .main::-webkit-scrollbar {
+		        display: none;
+		    }
+		.mainBody{
+			width: 50%;
+		
+			margin-top: 100px;
+			
+			position: relative;
+		}
+		.mainBody h1{
+			/* margin-top: 50px; */
+			margin-bottom: 20px;
+			height: 50px;
+			line-height: 50px;
+
+			font-weight: bold;
+		}
+		.mainBody .tag{
+			width: 100%;
+			height: 80px;
+	
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			flex-wrap: wrap;
+			border-bottom: 1px gray dashed;
+		}
+		.tag li{
+			height: 30px;
+			padding-left: 5px;
+			padding-right: 5px;
+			line-height: 30px;
+			margin-left: 10px;
+			border-radius: 5px;
+			font-size: 14px;
+		}
+		.tag li:hover{
+			cursor: pointer;
+			background-color: rgba(0,0,0,0.1);
+		}
+		.checked{
+			background-color: orangered;
+			color: white;
+		}
+		.contents{
+			position: absolute;
+			left: 0;
+			top: 150px;
+			width: 100%;
+			min-height: 550px;
+		
+			
+			display: flex;
+			flex-direction: column;
+			opacity: 0;
+
+			
+		}
+		.onshow{
+			opacity: 1;
+			z-index: 1;
+		}
+		.contentsmain{
+			width: 100%;
+			min-height: 500px;
+			border-bottom: gray 1px dashed;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			flex-wrap: wrap;
+			
+		}
+		.contentsmain .content{
+		
+			width: 125px;
+			height: 225px;
+			/* border: red 1px solid; */
+			text-align: center;
+			overflow: hidden;
+			transition: all 0.3s;
+			
+		}
+		.content:hover{
+			border: 1px #ccc solid;
+			/* box-shadow: 0 0 2px #000000; */
+			cursor: pointer;
+			width: 140px;
+			height: 230px;
+			animation: chande 3s infinite;
+		}
+		@keyframes chande{
+			0%{box-shadow: 0 0 5px #2c07ff;}
+			20%{box-shadow: 0 0 5px #00aaff;}
+			40%{box-shadow: 0 0 5px #00ff7f;}
+			60%{box-shadow: 0 0 5px #ffff00;}
+			80%{box-shadow: 0 0 5px #ff5500;}
+			100%{box-shadow: 0 0 5px #ff55ff;}
+			
+		}
+		.content img{
+			width: 100%;
+			height: 180px;
+			display: block;
+		}
+		.content a{
+			font-size: 14px;
+			color: #000000;
+			
+		}
+		a span{color: red;}
+		.contentsfooter{
+			width: 100%;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+			
+			color: orangered;
+			font-size: 15px;
+			cursor: pointer;
+		}
+		.aside{
+			width: 30%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			
+		}
+		.aside .stories{
+			margin-top: 100px;
+			width: 100%;
+			height: 45px;
+	
+			border-radius: 10px;
+			overflow: hidden;
+			transition: all 0.5s;
+		}
+		.stories textarea{
+			font-family: "Microsoft Yahei";
+			margin-left: 20px;
+			width: 90%;
+			height: 40px;
+			font-size: 25px;
+			color: gray;
+			
+			line-height: 1.5;
+			border: 1px solid #000000;
+			border-radius: 5px;
+			transition: all 0.5s;
+
+		}
+		textarea::-webkit-input-placeholder {
+		
+		    color: #b3b3b3;
+		}
+		.stories #send{
+			float: right;
+			margin-right: 30px;
+			height: 30px;
+			width: 50px;
+			line-height: 30px;
+			text-align: center;
+			border: #ccc 1px solid;
+			box-shadow: 0 0 2px #000000;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+	
+		.asideBody{
+		
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.myComment-wrap{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.sended{
+			width: 95%;
+			min-height: 100px;
+			border: 1px #ccc solid;
+			border-radius: 5px;
+			display: flex;
+			flex-direction: column;
+			overflow: hidden;
+			margin-top: 10px;
+			transition: all 0.3s;
+			
+		}
+		.sended:hover{
+			width: 100%;
+			cursor: pointer;
+			animation: chande 3s infinite;
+		}
+		.myComment{
+			width: 95%;
+			min-height: 0;
+			border: 1px #ccc solid;
+			border-radius: 5px;
+			display: flex;
+			flex-direction: column;
+			margin-top: 10px;
+			overflow: hidden;
+		}
+		.sendedComment{
+			width: 100%;
+			min-height: 50px;
+			padding-bottom: 10px;
+			
+		}
+		.sendedComment span{
+			width: 40px;
+			height: 40px;
+			display: block;
+			font-size:40px ;
+			font-weight: bold;
+			color: gray;	
+		}
+		.sendedComment p{
+			margin-left: 40px;
+			
+		}
+		.people{
+			padding-left: 20px;
+			border-top: 1px #ccc dashed;
+			width: 100%;
+			height: 50px;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			
+		}
+		.people img{
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			display: block;
+		}
+		.people-P{
+			padding-left: 15px;
+			flex: 1;
+			height: 50px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.people-P p:nth-child(1){
+			font-size: 15px;
+		}
+		.people p:nth-child(2){
+			font-size: 10px;
+		}
+		#change{
+			float: left;
+			margin-left: 20px;
+			margin-top: 15px;
+			color: gray;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		footer{
+			
+			
+			width: 100%;
+			height: 50px;
+			background: #f7f7f7;
+			text-align: center;
+			line-height: 50px;
+		
+		}
+	</style>
+	<body>
+		<header>
+			<div class="logo"></div>
+<!-- 			<div class="search">
+				<form action="" method="">
+					<input type="text" name="" id="" value="" placeholder="请输入想要查找的电影ID 例如:1907966"/>
+					<div class="searchIcon" ></div>
+				</form>
+				
+			</div> -->
+			<nav>
+				<a href="index.html" class="on0">首页</a>
+				<a href="index.html#rm">热门</a>
+				<a href="index.html#tj">推荐</a>
+				<a href="index.html#yp">分享</a>
+				<a href="###"style="color: orangered;">更多</a>
+				<a href="detail.html">搜索</a>
+				<a href="###" id="gy" style="width: 160px;">关于&联系</a>
+				
+			</nav>
+		</header>
+		<div class="main">
+	
+			<div class="mainBody">
+				<div class="search">
+					<!-- <div class="logo2"></div> -->
+					<form action="" method="">
+						<input type="text" name="" id="" value="" placeholder="请输入想要查找的电影ID 例如:1907966"/>
+						<div class="searchIcon" ></div>
+					</form>
+					
+				</div>
+				<h1>选电影</h1>
+				<nav class="tag">
+					<li class="checked">热门</li>
+					<li>猜你喜欢</li>
+					<li>最新</li>
+					<li>经典</li>
+					<li>可播放</li>
+					<li>高分</li>
+					<li>冷门佳片</li>
+					<li>华语</li>
+					<li>欧美</li>
+					<li>韩国</li>
+					<li>日本</li>
+					<li>动作</li>
+					<li>喜剧</li>
+					<li>爱情</li>
+					<li>科幻</li>
+					<li>悬疑</li>
+					<li>恐怖</li>
+					<li>动画</li>
+			
+				</nav>
+				
+				
+				
+				<div class="contents onshow">
+					<div class="contentsmain">
+						
+					<!-- 	<div class="content">
+							<img src="img/p.jpg" >
+							<a href="">理查德·朱维尔的哀歌<span>&nbsp;9.3</span></a>
+						</div> -->
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				<div class="contents">
+					<div class="contentsmain">
+					</div>
+					<div class="contentsfooter">
+						加载更多
+					</div>
+				</div>
+				
+				
+			</div>
+			<div class="aside">
+				<div class="stories">
+					<textarea rows="" cols="" placeholder="分享你的看法"></textarea>
+					<div id="change" style="cursor: pointer;">
+						换个心情😜
+					</div>
+					<div id="send">发布</div>
+				</div>
+				<div class="asideBody">
+					<div class="myComment-wrap">
+				<!-- 		<div class="myComment">
+							
+						</div> -->
+					</div>
+				<!-- 	<div class="sended">
+						<div class="sendedComment">
+							<span>“</span><p>maxlength : 设置文本框中最多可以输入的字符数,maxlength : 设置文本框中最多可以输入的字符数maxlength : 设置文本框中最多可以输入的字符数</p>
+						</div>
+						<div class="people">
+							<img src="img/QQ图片20190428100655.jpg" >
+							<div class="people-P">
+								<p>Listener</p>
+								<p>我现在有窗户了</p>
+							</div>
+						</div>
+					</div>
+				 -->	 
+				</div>
+				
+			</div>
+			
+		</div>
+		<div class="show2">
+			
+			<div class="card5">
+				<div class="exit">✖</div>
+				<div class="card5-1">
+					<h1></h1>
+					<h3 id="hTitletwo"><!-- 每个人的一生都是电影的合辑 --></h3>
+					<h3 id="hTitletri"><!-- 希望你在做看客的同时，也讲好自己的故事 --></h3>
+				</div>
+				<div class="card5-2">	
+					<div class="myHeadpic hide">
+						<img src="img/qq.jpg" >
+					</div>
+					<div class="myinformation">
+						<a href="https://user.qzone.qq.com/823839693/infocenter"><span style="color: orangered;font-size: 30px;">QQ:</span>&nbsp;&nbsp;&nbsp;823839693</a>
+						<a><span style="color: orangered;font-size: 30px;">Tel:</span>&nbsp;&nbsp;&nbsp;17719982410</a>
+						<a>银鞍照白马，飒沓如流星</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer id="footer">
+			版权所有 © QXH
+		</footer>
+	</body>
+	<script src="js/more.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/about.js" type="text/javascript" charset="utf-8"></script>
+</html>

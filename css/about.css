@@ -1,0 +1,122 @@
+.show2{
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height:0;
+		background-color: #00000080;
+	
+		transition: all 1s;
+		
+		overflow: hidden;
+		z-index: 10;
+	}
+	
+	.show2 .card5{
+			background: #fff;
+			border-radius: 10px;
+			margin: 100px auto;
+			width: 80%;
+			height: 700px;
+			text-align: center;
+			color:slategray;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+	}
+	.card5 .exit{
+		width: 40px;
+		height: 40px;
+		color: rgba(0,0,0,0.5);
+		position: absolute;
+		top: 20px;
+		right: 30px;
+		font-size: 40px;
+		text-align: center;
+		line-height: 40px;
+		text-shadow:  0px 0px 0px;
+		transition: all 1;
+	}
+	.exit:hover{
+		cursor: pointer;
+		text-shadow: #000000 0px 0px 20px;
+	}
+/* 	@keyframes sun{
+		100%{
+			background-position: -400% 0;
+		}
+	} */
+	.card5-1{
+		width: 50%;
+		height: 200px;
+		
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.card5-2{
+		width: 40%;
+		height: 140px;
+	
+		overflow: hidden;
+		transition: all 1s;
+	}
+	.myHeadpic{
+		width: 100px;
+		margin: 20px auto;
+		transform: translate(0,0);
+	
+		border-radius: 50%;
+		
+	}
+	.myHeadpic::after{
+		content: "";
+		position: absolute;
+		left: -5px;
+		top: -5px;
+		right: -5px;
+		bottom: -5px;
+		background:linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+		background-size: 400%;
+		border-radius: 50%;
+		filter:blur(10px) ;
+		z-index: -1;
+		animation: sun 10s infinite;
+	}
+
+	@keyframes sun{
+		100%{
+			background-position: -400% 0;
+		}
+	}
+	.myHeadpic img{
+		cursor: pointer;
+		border-radius: 50%;
+		display: block;
+		width: 100%;
+	}
+	.myinformation{
+		
+		margin: 35px auto;
+		width: 50%;
+		height: 50%;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		background-color: #fff;
+		border:  #000 1px solid;
+		box-shadow: 0px 0px 10px #000;
+	}
+	.myinformation a{
+		line-height: 40px;
+		color: #000;
+		font-size: 20px;
+		width: 90%;
+		overflow: hidden;
+		border-bottom: 1px #000 solid;
+		height: 40px;
+	}
